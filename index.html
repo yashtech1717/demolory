@@ -1,0 +1,1302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Premium Neumorphism Survey · YASH WORLD</title>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* ============================
+       RESET & BASE
+    ============================ */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Manrope', sans-serif;
+      background: #eef2f7;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 40px;
+      overflow-x: hidden;
+      color: #646d79;
+    }
+
+    /* ============================
+       BACKGROUND
+    ============================ */
+    .background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -10;
+      background:
+        radial-gradient(circle at 20% 20%, #ffffff 0%, transparent 40%),
+        radial-gradient(circle at 80% 60%, #ffffff 0%, transparent 40%),
+        linear-gradient(135deg, #eef2f7, #e8edf4);
+      animation: bgMove 12s ease-in-out infinite alternate;
+    }
+
+    @keyframes bgMove {
+      from { transform: scale(1); }
+      to { transform: scale(1.08); }
+    }
+
+    /* ============================
+       CARD
+    ============================ */
+    .container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .card {
+      width: 900px;
+      max-width: 100%;
+      padding: 50px;
+      border-radius: 35px;
+      background: #eef2f7;
+      box-shadow:
+        22px 22px 44px #cfd5dc,
+        -22px -22px 44px #ffffff,
+        5px 5px 10px rgba(255, 255, 255, .3);
+      transition: .4s;
+      animation: cardFloat 6s ease-in-out infinite;
+    }
+
+    @keyframes cardFloat {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+      100% { transform: translateY(0px); }
+    }
+
+    /* ============================
+       HEADER
+    ============================ */
+    .header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 58px;
+      font-weight: 800;
+      letter-spacing: 6px;
+      color: #727d8d;
+      text-shadow: -2px -2px 2px white, 2px 2px 3px #ccd3dc;
+    }
+
+    .header p {
+      margin-top: 10px;
+      font-size: 18px;
+      color: #9aa3ae;
+      letter-spacing: 1px;
+    }
+
+    /* ============================
+       PROGRESS
+    ============================ */
+    .progress {
+      margin-top: 35px;
+      width: 100%;
+      height: 18px;
+      border-radius: 30px;
+      background: #eef2f7;
+      overflow: hidden;
+      box-shadow: inset 6px 6px 12px #d3d8de, inset -6px -6px 12px white;
+    }
+
+    #progressBar {
+      width: 12%;
+      height: 100%;
+      border-radius: 30px;
+      background: linear-gradient(90deg, #d8dde5, #ffffff, #d8dde5);
+      transition: width 0.6s ease;
+    }
+
+    /* ============================
+       PAGES
+    ============================ */
+    .page {
+      display: none;
+      animation: pageShow .5s ease;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes pageShow {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================
+       TYPING BOX
+    ============================ */
+    .typingBox {
+      padding: 35px;
+      border-radius: 30px;
+      min-height: 220px;
+      background: #eef2f7;
+      box-shadow: inset 12px 12px 24px #d2d7de, inset -12px -12px 24px #ffffff;
+      display: flex;
+      align-items: center;
+      font-size: 25px;
+      line-height: 1.8;
+      color: #69727e;
+    }
+
+    /* ============================
+       QUESTION
+    ============================ */
+    .page h2 {
+      font-size: 32px;
+      margin-bottom: 15px;
+      color: #69727e;
+    }
+
+    .page .subtitle {
+      font-size: 16px;
+      color: #9aa3ae;
+      margin-bottom: 20px;
+    }
+
+    .page p {
+      font-size: 18px;
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .marks-badge {
+      display: inline-block;
+      background: #f39c12;
+      color: white;
+      padding: 4px 14px;
+      border-radius: 30px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-left: 12px;
+    }
+
+    /* ============================
+       OPTIONS
+    ============================ */
+    .options {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      margin-top: 20px;
+      margin-bottom: 25px;
+    }
+
+    .options label {
+      padding: 18px 22px;
+      border-radius: 20px;
+      cursor: pointer;
+      background: #eef2f7;
+      box-shadow: 8px 8px 16px #cfd5dc, -8px -8px 16px white;
+      transition: .35s;
+      font-size: 17px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .options label:hover {
+      transform: translateY(-4px);
+    }
+
+    .options label.correct {
+      border: 3px solid #2ecc71;
+      box-shadow: 0 0 20px rgba(46, 204, 113, 0.2);
+    }
+
+    .options label.wrong {
+      border: 3px solid #e74c3c;
+      box-shadow: 0 0 20px rgba(231, 76, 60, 0.2);
+    }
+
+    .options label.partial {
+      border: 3px solid #f39c12;
+      box-shadow: 0 0 20px rgba(243, 156, 18, 0.2);
+    }
+
+    input[type="radio"],
+    input[type="checkbox"] {
+      transform: scale(1.3);
+    }
+
+    /* ============================
+       2 MARKS QUESTION BOX (Click to reveal)
+    ============================ */
+    .two-marks-question {
+      background: #eef2f7;
+      padding: 30px;
+      border-radius: 25px;
+      margin: 20px 0;
+      cursor: pointer;
+      box-shadow: 
+        12px 12px 24px #cfd5dc,
+        -12px -12px 24px #ffffff;
+      transition: all 0.4s ease;
+      position: relative;
+    }
+
+    .two-marks-question:hover {
+      transform: translateY(-3px);
+      box-shadow: 
+        16px 16px 32px #c8ced6,
+        -16px -16px 32px #ffffff;
+    }
+
+    .two-marks-question .question-text {
+      font-size: 20px;
+      font-weight: 600;
+      color: #4f7cff;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .two-marks-question .click-hint {
+      font-size: 14px;
+      color: #9aa3ae;
+      font-weight: 400;
+      margin-top: 8px;
+    }
+
+    .two-marks-question .click-icon {
+      font-size: 24px;
+      color: #4f7cff;
+      animation: pulse 2s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 0.6; }
+      50% { transform: scale(1.2); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.6; }
+    }
+
+    .two-marks-answer {
+      margin-top: 20px;
+      padding: 20px 25px;
+      border-radius: 20px;
+      background: #eef2f7;
+      box-shadow: inset 4px 4px 8px #d3d8de, inset -4px -4px 8px white;
+      display: none;
+      animation: slideIn 0.6s ease;
+    }
+
+    .two-marks-answer.show {
+      display: block;
+    }
+
+    .two-marks-answer .correct-text {
+      color: #2ecc71;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .two-marks-answer .wrong-text {
+      color: #e74c3c;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .two-marks-answer .partial-text {
+      color: #f39c12;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .two-marks-answer .explanation {
+      color: #69727e;
+      margin-top: 8px;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .two-marks-answer .marks-earned {
+      margin-top: 12px;
+      padding: 10px 16px;
+      border-radius: 12px;
+      background: #eef2f7;
+      box-shadow: inset 2px 2px 6px #d3d8de, inset -2px -2px 6px white;
+      font-weight: 700;
+      font-size: 18px;
+      color: #4f7cff;
+    }
+
+    .two-marks-answer .marks-earned .full-marks {
+      color: #2ecc71;
+    }
+
+    .two-marks-answer .marks-earned .partial-marks {
+      color: #f39c12;
+    }
+
+    .two-marks-answer .marks-earned .zero-marks {
+      color: #e74c3c;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(-15px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ============================
+       BUTTONS
+    ============================ */
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 25px;
+      margin-top: 40px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      min-width: 170px;
+      padding: 18px 35px;
+      font-size: 17px;
+      font-weight: 700;
+      font-family: inherit;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      border-radius: 20px;
+      color: #6d7682;
+      background: #eef2f7;
+      transition: .35s;
+      box-shadow: 10px 10px 20px #cfd5dc, -10px -10px 20px #ffffff;
+    }
+
+    button:hover {
+      transform: translateY(-5px);
+      box-shadow: 15px 15px 30px #cbd1d9, -15px -15px 30px #ffffff;
+    }
+
+    button:active {
+      transform: scale(.96);
+      box-shadow: inset 8px 8px 16px #cfd5dc, inset -8px -8px 16px #ffffff;
+    }
+
+    .next { color: #4f7cff; }
+    .exit { color: #ff6b6b; }
+    .previous { color: #666; }
+    .submit { color: #2ecc71; }
+
+    /* ============================
+       TEXTAREA
+    ============================ */
+    textarea {
+      width: 100%;
+      margin-top: 20px;
+      padding: 22px;
+      font-size: 16px;
+      font-family: inherit;
+      resize: none;
+      height: 120px;
+      border: none;
+      outline: none;
+      border-radius: 22px;
+      background: #eef2f7;
+      color: #666;
+      transition: .35s;
+      box-shadow: inset 10px 10px 20px #cfd5dc, inset -10px -10px 20px #ffffff;
+    }
+
+    textarea:focus {
+      box-shadow: inset 6px 6px 12px #cfd5dc, inset -6px -6px 12px white, 0 0 0 4px rgba(180, 190, 205, .3);
+    }
+
+    /* ============================
+       FEEDBACK SUMMARY
+    ============================ */
+    .feedback-summary {
+      padding: 20px 0;
+    }
+
+    .feedback-item {
+      background: #eef2f7;
+      padding: 20px 25px;
+      margin-bottom: 20px;
+      border-radius: 20px;
+      box-shadow: inset 4px 4px 8px #d3d8de, inset -4px -4px 8px white;
+      border-left: 4px solid #4f7cff;
+    }
+
+    .feedback-item h3 {
+      color: #4f7cff;
+      font-size: 18px;
+      margin-bottom: 10px;
+    }
+
+    .feedback-item .answer {
+      color: #69727e;
+      font-size: 16px;
+      line-height: 1.6;
+    }
+
+    .feedback-item .answer strong {
+      color: #4f7cff;
+      font-weight: 600;
+    }
+
+    .feedback-item .empty {
+      color: #b7bdc6;
+      font-style: italic;
+    }
+
+    .feedback-item .status-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-top: 8px;
+    }
+
+    .status-badge.correct {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .status-badge.wrong {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    .status-badge.partial {
+      background: #fff3cd;
+      color: #856404;
+    }
+
+    .status-badge.marks {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .summary-actions {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================
+       SUCCESS
+    ============================ */
+    .success {
+      text-align: center;
+      padding: 50px 20px;
+    }
+
+    .success h2 {
+      font-size: 54px;
+      margin-bottom: 20px;
+      color: #69727e;
+    }
+
+    .success p {
+      font-size: 20px;
+      margin-bottom: 35px;
+      color: #8b94a0;
+    }
+
+    .success button {
+      margin-top: 20px;
+    }
+
+    /* ============================
+       SCROLLBAR
+    ============================ */
+    ::-webkit-scrollbar { width: 10px; }
+    ::-webkit-scrollbar-track { background: #eef2f7; }
+    ::-webkit-scrollbar-thumb { background: #d6dce4; border-radius: 20px; }
+    ::-webkit-scrollbar-thumb:hover { background: #c5ccd5; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 900px) {
+      .card { padding: 35px; }
+      .header h1 { font-size: 42px; }
+      .typingBox { font-size: 20px; min-height: 180px; }
+      .page h2 { font-size: 28px; }
+    }
+
+    @media (max-width: 600px) {
+      body { padding: 15px; }
+      .card { padding: 22px; border-radius: 25px; }
+      .header h1 { font-size: 34px; letter-spacing: 2px; }
+      .header p { font-size: 15px; }
+      .typingBox { font-size: 18px; padding: 22px; min-height: 160px; }
+      .options label { font-size: 15px; padding: 15px; }
+      button { width: 100%; }
+      .buttons { flex-direction: column; gap: 15px; }
+      .feedback-item { padding: 15px; }
+      .two-marks-question { padding: 20px; }
+      .two-marks-question .question-text { font-size: 17px; }
+    }
+
+    @media (min-width: 1500px) {
+      .card { max-width: 1050px; }
+      .header h1 { font-size: 70px; }
+      .typingBox { font-size: 28px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+  <div class="card">
+
+    <div class="header">
+      <h1>YASH WORLD</h1>
+      <p>Premium Interactive Experience</p>
+      <div class="progress">
+        <div id="progressBar"></div>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- PAGE 1 - First Intro Text                    -->
+    <!-- ============================================ -->
+    <section class="page active" id="page1">
+      <div class="typingBox">
+        <p id="typing1"></p>
+      </div>
+      <div class="buttons">
+        <button class="next" onclick="nextPage()">Next →</button>
+        <button class="exit" onclick="exitSurvey()">Exit</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 2 - Second Intro Text                   -->
+    <!-- ============================================ -->
+    <section class="page" id="page2">
+      <div class="typingBox">
+        <p id="typing2"></p>
+      </div>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="nextPage()">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 3 - Survey Question 1 (with reveal)     -->
+    <!-- ============================================ -->
+    <section class="page" id="page3">
+      <h2>📝 Survey Question 1 <span class="marks-badge" style="background:#4f7cff;">1 Mark</span></h2>
+      <p class="subtitle">This is a survey question with answer reveal</p>
+      <p>What is your preferred way to learn new technologies?</p>
+      <div class="options" id="q1Options">
+        <label onclick="revealAnswer(1, 'A')">
+          <input type="radio" name="q1" value="A" /> A) Online courses
+        </label>
+        <label onclick="revealAnswer(1, 'B')">
+          <input type="radio" name="q1" value="B" /> B) Reading documentation
+        </label>
+        <label onclick="revealAnswer(1, 'C')">
+          <input type="radio" name="q1" value="C" /> C) Hands-on projects
+        </label>
+        <label onclick="revealAnswer(1, 'D')">
+          <input type="radio" name="q1" value="D" /> D) Watching tutorials
+        </label>
+      </div>
+      <div id="reveal1" class="reveal-answer">
+        <p><span class="correct-text">✅ Great choice!</span> Hands-on projects are the most effective way to learn!</p>
+        <div class="explanation">Research shows that active learning through projects leads to 70% better retention.</div>
+        <div class="marks-earned">⭐ +1 Mark Earned</div>
+      </div>
+      <textarea id="q1Feedback" placeholder="Share your thoughts on learning preferences..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveFeedback(1); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 4 - Survey Question 2 (with reveal)     -->
+    <!-- ============================================ -->
+    <section class="page" id="page4">
+      <h2>📝 Survey Question 2 <span class="marks-badge" style="background:#4f7cff;">1 Mark</span></h2>
+      <p class="subtitle">Share your opinion with answer reveal</p>
+      <p>What's the most important factor for a good user interface?</p>
+      <div class="options" id="q2Options">
+        <label onclick="revealAnswer(2, 'A')">
+          <input type="radio" name="q2" value="A" /> A) Visual design
+        </label>
+        <label onclick="revealAnswer(2, 'B')">
+          <input type="radio" name="q2" value="B" /> B) Ease of use
+        </label>
+        <label onclick="revealAnswer(2, 'C')">
+          <input type="radio" name="q2" value="C" /> C) Speed
+        </label>
+        <label onclick="revealAnswer(2, 'D')">
+          <input type="radio" name="q2" value="D" /> D) Accessibility
+        </label>
+      </div>
+      <div id="reveal2" class="reveal-answer">
+        <p><span class="correct-text">✅ Excellent choice!</span> All factors are important, but ease of use is the most critical!</p>
+        <div class="explanation">Studies show that 88% of users are less likely to return to a site after a bad experience.</div>
+        <div class="marks-earned">⭐ +1 Mark Earned</div>
+      </div>
+      <textarea id="q2Feedback" placeholder="What do you think makes a great UI?..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveFeedback(2); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 5 - 2 Marks Question 1 (Click to reveal) -->
+    <!-- ============================================ -->
+    <section class="page" id="page5">
+      <h2>📝 2 Marks Question 1 <span class="marks-badge">2 Marks</span></h2>
+      <p class="subtitle">Click on the question box below to reveal the answer</p>
+      
+      <div class="two-marks-question" onclick="toggleTwoMarksAnswer(1)">
+        <div class="question-text">
+          <span>🔍 What is the correct way to declare a variable in JavaScript?</span>
+          <span class="click-icon">👆</span>
+        </div>
+        <div class="click-hint">💡 Click to reveal the answer and earn marks!</div>
+      </div>
+
+      <div id="twoMarksAnswer1" class="two-marks-answer">
+        <p><span class="correct-text">✅ Correct Answer: let x = 10;</span></p>
+        <div class="explanation">
+          <strong>Explanation:</strong> In JavaScript, you can declare variables using 'let', 'const', or 'var'. 
+          The modern and recommended way is using 'let' (for variables that can change) or 'const' (for constants). 
+          'var' is older and has some scoping issues.
+        </div>
+        <div class="marks-earned">
+          📊 <span class="full-marks">+2 Marks Earned!</span>
+          <span style="font-size: 14px; font-weight: 400; color: #69727e; display: block; margin-top: 4px;">
+            You've earned full marks for this question!
+          </span>
+        </div>
+      </div>
+
+      <textarea id="q3Feedback" placeholder="Share your JavaScript experience..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveTwoMarksFeedback(1); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 6 - 2 Marks Question 2 (Click to reveal) -->
+    <!-- ============================================ -->
+    <section class="page" id="page6">
+      <h2>📝 2 Marks Question 2 <span class="marks-badge">2 Marks</span></h2>
+      <p class="subtitle">Click on the question box below to reveal the answer</p>
+      
+      <div class="two-marks-question" onclick="toggleTwoMarksAnswer(2)">
+        <div class="question-text">
+          <span>🔍 Which CSS properties are used for creating flexible layouts?</span>
+          <span class="click-icon">👆</span>
+        </div>
+        <div class="click-hint">💡 Click to reveal the answer and earn marks!</div>
+      </div>
+
+      <div id="twoMarksAnswer2" class="two-marks-answer">
+        <p><span class="correct-text">✅ Correct Answer: Flexbox and CSS Grid</span></p>
+        <div class="explanation">
+          <strong>Explanation:</strong> CSS Flexbox (display: flex) and CSS Grid (display: grid) are the two 
+          primary layout systems for creating flexible, responsive web layouts. Flexbox is great for one-dimensional 
+          layouts, while Grid excels at two-dimensional layouts.
+        </div>
+        <div class="marks-earned">
+          📊 <span class="full-marks">+2 Marks Earned!</span>
+          <span style="font-size: 14px; font-weight: 400; color: #69727e; display: block; margin-top: 4px;">
+            You've earned full marks for this question!
+          </span>
+        </div>
+      </div>
+
+      <textarea id="q4Feedback" placeholder="Tell us about your CSS experience..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveTwoMarksFeedback(2); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 7 - Quiz Question 1 (with correct/incorrect) -->
+    <!-- ============================================ -->
+    <section class="page" id="page7">
+      <h2>🧠 Quiz Question 1 <span class="marks-badge" style="background:#4f7cff;">1 Mark</span></h2>
+      <p class="subtitle">Test your knowledge - choose the correct answer</p>
+      <p>What does CSS stand for?</p>
+      <div class="options" id="q5Options">
+        <label onclick="checkQuizAnswer(5, 'A', false)">
+          <input type="radio" name="q5" value="A" /> A) Computer Style Sheets
+        </label>
+        <label onclick="checkQuizAnswer(5, 'B', false)">
+          <input type="radio" name="q5" value="B" /> B) Creative Style Sheets
+        </label>
+        <label onclick="checkQuizAnswer(5, 'C', true)">
+          <input type="radio" name="q5" value="C" /> C) Cascading Style Sheets
+        </label>
+        <label onclick="checkQuizAnswer(5, 'D', false)">
+          <input type="radio" name="q5" value="D" /> D) Colorful Style Sheets
+        </label>
+      </div>
+      <div id="reveal5" class="reveal-answer">
+        <p id="quizResult5"></p>
+        <div class="explanation">CSS stands for Cascading Style Sheets, which is used for styling web pages.</div>
+        <div class="marks-earned">⭐ +1 Mark Earned</div>
+      </div>
+      <textarea id="q5Feedback" placeholder="Share your CSS experience..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveFeedback(5); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 8 - Quiz Question 2 (with correct/incorrect) -->
+    <!-- ============================================ -->
+    <section class="page" id="page8">
+      <h2>🧠 Quiz Question 2 <span class="marks-badge" style="background:#4f7cff;">1 Mark</span></h2>
+      <p class="subtitle">Test your JavaScript knowledge</p>
+      <p>Which of the following is NOT a valid JavaScript data type?</p>
+      <div class="options" id="q6Options">
+        <label onclick="checkQuizAnswer(6, 'A', false)">
+          <input type="radio" name="q6" value="A" /> A) String
+        </label>
+        <label onclick="checkQuizAnswer(6, 'B', false)">
+          <input type="radio" name="q6" value="B" /> B) Number
+        </label>
+        <label onclick="checkQuizAnswer(6, 'C', false)">
+          <input type="radio" name="q6" value="C" /> C) Boolean
+        </label>
+        <label onclick="checkQuizAnswer(6, 'D', true)">
+          <input type="radio" name="q6" value="D" /> D) Float
+        </label>
+      </div>
+      <div id="reveal6" class="reveal-answer">
+        <p id="quizResult6"></p>
+        <div class="explanation">JavaScript doesn't have a "Float" data type. It uses "Number" for all numeric values.</div>
+        <div class="marks-earned">⭐ +1 Mark Earned</div>
+      </div>
+      <textarea id="q6Feedback" placeholder="Tell us about your JavaScript experience..."></textarea>
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveFeedback(6); nextPage();">Next →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 9 - Final Feedback (Website & Experience) -->
+    <!-- ============================================ -->
+    <section class="page" id="page9">
+      <h2>🌟 Final Feedback</h2>
+      <p class="subtitle">Help us improve your experience</p>
+      
+      <p style="font-weight: 600; margin-top: 20px;">1. How would you rate your overall experience on this website?</p>
+      <div class="options" id="q7Options">
+        <label><input type="radio" name="q7" value="Excellent" /> ⭐ Excellent</label>
+        <label><input type="radio" name="q7" value="Good" /> 👍 Good</label>
+        <label><input type="radio" name="q7" value="Average" /> 👌 Average</label>
+        <label><input type="radio" name="q7" value="Poor" /> 👎 Poor</label>
+      </div>
+
+      <p style="font-weight: 600; margin-top: 25px;">2. What did you like most about this experience?</p>
+      <textarea id="q7Feedback" placeholder="Tell us what you enjoyed..."></textarea>
+
+      <p style="font-weight: 600; margin-top: 25px;">3. What could we improve?</p>
+      <textarea id="q7Feedback2" placeholder="Your suggestions for improvement..."></textarea>
+
+      <p style="font-weight: 600; margin-top: 25px;">4. Would you recommend this website to others?</p>
+      <div class="options" id="q8Options">
+        <label><input type="radio" name="q8" value="Definitely" /> ✅ Definitely</label>
+        <label><input type="radio" name="q8" value="Maybe" /> 🤷 Maybe</label>
+        <label><input type="radio" name="q8" value="No" /> ❌ No</label>
+      </div>
+      <textarea id="q8Feedback" placeholder="Any additional comments..."></textarea>
+
+      <div class="buttons">
+        <button class="previous" onclick="prevPage()">← Previous</button>
+        <button class="next" onclick="saveFinalFeedback(); showSummary();">📋 View Summary →</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 10 - FEEDBACK SUMMARY                   -->
+    <!-- ============================================ -->
+    <section class="page" id="page10">
+      <h2>📋 Your Complete Feedback</h2>
+      <p>Here's everything you shared with us:</p>
+      <div id="feedbackSummaryContainer" class="feedback-summary">
+        <!-- Dynamically filled -->
+      </div>
+      <div class="summary-actions">
+        <button onclick="prevPage()">← Back to Edit</button>
+        <button class="submit" onclick="submitAllFeedback()">✅ Submit All Feedback</button>
+      </div>
+    </section>
+
+    <!-- ============================================ -->
+    <!-- PAGE 11 - SUCCESS                           -->
+    <!-- ============================================ -->
+    <section class="page" id="page11">
+      <div class="success">
+        <h2>🎉 Thank You!</h2>
+        <p>Your valuable feedback has been recorded successfully.</p>
+        <button onclick="location.reload()">🔄 Restart Survey</button>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<script>
+  /* ============================
+     STORAGE - Collect all feedback
+     ============================ */
+  let allFeedback = {};
+  let quizResults = {};
+  let twoMarksRevealed = {};
+
+  /* ============================
+     PAGE NAVIGATION
+     ============================ */
+  const pages = document.querySelectorAll('.page');
+  let currentPage = 0;
+  const progress = document.getElementById('progressBar');
+
+  // Typing texts
+  const intro1 = `
+    Welcome to YASH WORLD.<br>
+    This is a premium interactive experience.<br>
+    Please read every page carefully.<br>
+    Click NEXT to continue.
+  `;
+  const intro2 = `
+    Thank you for continuing.<br>
+    This survey includes:<br>
+    • Survey questions with answer reveals (1 Mark each)<br>
+    • 2 Marks questions - Click to reveal answers (2 Marks each)<br>
+    • Quiz questions to test your knowledge (1 Mark each)<br>
+    • Final feedback about your experience<br>
+    Take your time and enjoy!
+  `;
+
+  function typeWriter(id, text, speed = 30) {
+    const element = document.getElementById(id);
+    if (!element) return;
+    element.innerHTML = '';
+    let i = 0;
+    function typing() {
+      if (i < text.length) {
+        element.innerHTML += text.charAt(i);
+        i++;
+        setTimeout(typing, speed);
+      }
+    }
+    typing();
+  }
+
+  function updateProgress() {
+    const percent = ((currentPage + 1) / pages.length) * 100;
+    progress.style.width = percent + '%';
+  }
+
+  function showPage(index) {
+    pages.forEach(p => p.classList.remove('active'));
+    pages[index].classList.add('active');
+    currentPage = index;
+    updateProgress();
+
+    if (index === 0) typeWriter('typing1', intro1);
+    if (index === 1) typeWriter('typing2', intro2);
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function nextPage() {
+    if (currentPage >= pages.length - 1) return;
+    pages[currentPage].classList.remove('active');
+    currentPage++;
+    pages[currentPage].classList.add('active');
+    updateProgress();
+
+    if (currentPage === 1) typeWriter('typing2', intro2);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function prevPage() {
+    if (currentPage <= 0) return;
+    pages[currentPage].classList.remove('active');
+    currentPage--;
+    pages[currentPage].classList.add('active');
+    updateProgress();
+
+    if (currentPage === 0) typeWriter('typing1', intro1);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function exitSurvey() {
+    if (confirm('Are you sure you want to exit?')) {
+      location.reload();
+    }
+  }
+
+  /* ============================
+     REVEAL ANSWER (Survey Questions - 1 Mark)
+     ============================ */
+  function revealAnswer(questionNum, selected) {
+    const revealDiv = document.getElementById(`reveal${questionNum}`);
+    if (revealDiv) {
+      revealDiv.classList.add('show');
+      
+      const options = document.getElementById(`q${questionNum}Options`);
+      if (options) {
+        const labels = options.querySelectorAll('label');
+        labels.forEach((label) => {
+          const radio = label.querySelector('input[type="radio"]');
+          if (radio && radio.checked) {
+            label.classList.add('correct');
+          } else {
+            label.classList.remove('correct', 'wrong');
+          }
+        });
+      }
+    }
+  }
+
+  /* ============================
+     TOGGLE 2 MARKS ANSWER (Click to reveal)
+     ============================ */
+  function toggleTwoMarksAnswer(questionNum) {
+    const answerDiv = document.getElementById(`twoMarksAnswer${questionNum}`);
+    const questionBox = answerDiv.previousElementSibling;
+    const clickIcon = questionBox.querySelector('.click-icon');
+    
+    if (answerDiv) {
+      // Toggle the answer
+      answerDiv.classList.toggle('show');
+      
+      // Change icon
+      if (answerDiv.classList.contains('show')) {
+        clickIcon.textContent = '👆👀';
+        // Mark as revealed
+        twoMarksRevealed[questionNum] = true;
+      } else {
+        clickIcon.textContent = '👆';
+      }
+    }
+  }
+
+  /* ============================
+     QUIZ ANSWER (Correct/Incorrect - 1 Mark)
+     ============================ */
+  function checkQuizAnswer(questionNum, selected, isCorrect) {
+    const revealDiv = document.getElementById(`reveal${questionNum}`);
+    const resultDiv = document.getElementById(`quizResult${questionNum}`);
+    
+    if (revealDiv && resultDiv) {
+      revealDiv.classList.add('show');
+      
+      let marks = 0;
+      if (isCorrect) {
+        marks = 1;
+        resultDiv.innerHTML = `<span class="correct-text">✅ Correct! Well done! (+1 Mark)</span>`;
+        quizResults[questionNum] = 'correct';
+      } else {
+        marks = 0;
+        resultDiv.innerHTML = `<span class="wrong-text">❌ Not quite. Try again! (0 Marks)</span>`;
+        quizResults[questionNum] = 'wrong';
+      }
+      
+      // Highlight selected option
+      const options = document.getElementById(`q${questionNum}Options`);
+      if (options) {
+        const labels = options.querySelectorAll('label');
+        labels.forEach((label) => {
+          const radio = label.querySelector('input[type="radio"]');
+          if (radio && radio.checked) {
+            if (isCorrect) {
+              label.classList.add('correct');
+              label.classList.remove('wrong');
+            } else {
+              label.classList.add('wrong');
+              label.classList.remove('correct');
+            }
+          } else {
+            label.classList.remove('correct', 'wrong');
+          }
+        });
+      }
+    }
+  }
+
+  /* ============================
+     SAVE FEEDBACK (Survey & Quiz Questions)
+     ============================ */
+  function saveFeedback(questionNum) {
+    const textarea = document.getElementById(`q${questionNum}Feedback`);
+    const text = textarea ? textarea.value.trim() : '';
+    
+    const optionsContainer = document.getElementById(`q${questionNum}Options`);
+    let selected = [];
+    if (optionsContainer) {
+      const inputs = optionsContainer.querySelectorAll('input[type="radio"]:checked, input[type="checkbox"]:checked');
+      inputs.forEach(input => {
+        const label = input.parentElement.textContent.trim();
+        selected.push(label);
+      });
+    }
+
+    let type = 'survey';
+    if (questionNum >= 5 && questionNum <= 6) {
+      type = 'quiz';
+    }
+    
+    allFeedback[questionNum] = {
+      type: type,
+      selected: selected,
+      text: text,
+      marks: (questionNum >= 5 && questionNum <= 6) ? (quizResults[questionNum] === 'correct' ? 1 : 0) : 1
+    };
+    
+    console.log(`✅ Feedback saved for Q${questionNum}:`, allFeedback[questionNum]);
+  }
+
+  /* ============================
+     SAVE 2 MARKS FEEDBACK (Click to reveal)
+     ============================ */
+  function saveTwoMarksFeedback(questionNum) {
+    const textarea = document.getElementById(`q${questionNum + 2}Feedback`); // q3Feedback, q4Feedback
+    const text = textarea ? textarea.value.trim() : '';
+    
+    const revealed = twoMarksRevealed[questionNum] || false;
+    const marks = revealed ? 2 : 0;
+    
+    allFeedback[questionNum + 2] = {
+      type: '2marks',
+      selected: [],
+      text: text,
+      marks: marks,
+      revealed: revealed,
+      status: revealed ? '✅ Revealed - Full Marks' : '⏳ Not Revealed'
+    };
+    
+    console.log(`✅ 2 Marks feedback saved for Q${questionNum + 2}:`, allFeedback[questionNum + 2]);
+  }
+
+  /* ============================
+     SAVE FINAL FEEDBACK
+     ============================ */
+  function saveFinalFeedback() {
+    const q7Options = document.getElementById('q7Options');
+    let rating = '';
+    if (q7Options) {
+      const checked = q7Options.querySelector('input[type="radio"]:checked');
+      if (checked) {
+        rating = checked.value;
+      }
+    }
+    
+    const q7Text = document.getElementById('q7Feedback');
+    const q7Text2 = document.getElementById('q7Feedback2');
+    
+    const q8Options = document.getElementById('q8Options');
+    let recommend = '';
+    if (q8Options) {
+      const checked = q8Options.querySelector('input[type="radio"]:checked');
+      if (checked) {
+        recommend = checked.value;
+      }
+    }
+    
+    const q8Text = document.getElementById('q8Feedback');
+    
+    allFeedback['final'] = {
+      rating: rating,
+      liked: q7Text ? q7Text.value.trim() : '',
+      improvements: q7Text2 ? q7Text2.value.trim() : '',
+      recommend: recommend,
+      additional: q8Text ? q8Text.value.trim() : ''
+    };
+    
+    console.log('✅ Final feedback saved:', allFeedback['final']);
+  }
+
+  /* ============================
+     SHOW SUMMARY
+     ============================ */
+  function showSummary() {
+    const container = document.getElementById('feedbackSummaryContainer');
+    if (!container) return;
+
+    saveFinalFeedback();
+
+    let html = '';
+    let totalMarks = 0;
+    let possibleMarks = 0;
+    
+    // Survey Questions (1 Mark each)
+    html += `<h3 style="margin-bottom: 15px; color: #4f7cff;">📝 Survey Questions (1 Mark each)</h3>`;
+    for (let i = 1; i <= 2; i++) {
+      const fb = allFeedback[i] || { selected: [], text: '', marks: 0 };
+      totalMarks += fb.marks || 0;
+      possibleMarks += 1;
+      
+      html += `
+        <div class="feedback-item">
+          <h3>Survey Question ${i} <span class="status-badge marks">${fb.marks || 0}/1 Mark</span></h3>
+          <div class="answer">
+            ${fb.selected.length > 0 ? `<strong>Selected:</strong> ${fb.selected.join(' · ')}<br>` : ''}
+            ${fb.text ? `<strong>Comment:</strong> "${fb.text}"` : '<span class="empty">No comment provided</span>'}
+          </div>
+        </div>
+      `;
+    }
+    
+    // 2 Marks Questions (Click to reveal)
+    html += `<h3 style="margin: 30px 0 15px; color: #f39c12;">📝 2 Marks Questions (Click to Reveal)</h3>`;
+    for (let i = 3; i <= 4; i++) {
+      const fb = allFeedback[i] || { selected: [], text: '', marks: 0, revealed: false };
+      totalMarks += fb.marks || 0;
+      possibleMarks += 2;
+      
+      const statusClass = fb.revealed ? 'correct' : 'wrong';
+      const statusText = fb.revealed ? '✅ Revealed - Full Marks' : '❌ Not Revealed';
+      
+      html += `
+        <div class="feedback-item">
+          <h3>2 Marks Question ${i-2} <span class="status-badge ${statusClass}">${fb.marks || 0}/2 Marks</span></h3>
+          <div class="answer">
+            ${fb.revealed ? '<strong>Status:</strong> ✅ Answer revealed!<br>' : '<strong>Status:</strong> ⏳ Click the question to reveal<br>'}
+            ${fb.text ? `<strong>Comment:</strong> "${fb.text}"` : '<span class="empty">No comment provided</span>'}
+          </div>
+        </div>
+      `;
+    }
+    
+    // Quiz Questions (1 Mark each)
+    html += `<h3 style="margin: 30px 0 15px; color: #4f7cff;">🧠 Quiz Questions (1 Mark each)</h3>`;
+    for (let i = 5; i <= 6; i++) {
+      const fb = allFeedback[i] || { selected: [], text: '', marks: 0 };
+      totalMarks += fb.marks || 0;
+      possibleMarks += 1;
+      
+      const status = fb.marks === 1 ? 
+        '<span class="status-badge correct">✅ Correct</span>' : 
+        '<span class="status-badge wrong">❌ Wrong</span>';
+      
+      html += `
+        <div class="feedback-item">
+          <h3>Quiz Question ${i-4} ${status}</h3>
+          <div class="answer">
+            ${fb.selected.length > 0 ? `<strong>Your answer:</strong> ${fb.selected.join(' · ')}<br>` : ''}
+            ${fb.text ? `<strong>Comment:</strong> "${fb.text}"` : '<span class="empty">No comment provided</span>'}
+          </div>
+        </div>
+      `;
+    }
+    
+    // Final Feedback
+    const final = allFeedback['final'] || {};
+    html += `
+      <h3 style="margin: 30px 0 15px; color: #4f7cff;">🌟 Final Feedback</h3>
+      <div class="feedback-item">
+        <h3>Experience & Website Feedback</h3>
+        <div class="answer">
+          ${final.rating ? `<strong>Rating:</strong> ${final.rating}<br>` : ''}
+          ${final.liked ? `<strong>What you liked:</strong> "${final.liked}"<br>` : ''}
+          ${final.improvements ? `<strong>Improvements:</strong> "${final.improvements}"<br>` : ''}
+          ${final.recommend ? `<strong>Would recommend:</strong> ${final.recommend}<br>` : ''}
+          ${final.additional ? `<strong>Additional comments:</strong> "${final.additional}"` : ''}
+          ${!final.rating && !final.liked && !final.improvements && !final.recommend ? '<span class="empty">No final feedback provided</span>' : ''}
+        </div>
+      </div>
+    `;
+    
+    // Total Marks Summary
+    html += `
+      <div class="feedback-item" style="border-left-color: #2ecc71; background: linear-gradient(135deg, #eef2f7, #e8edf4);">
+        <h3 style="color: #2ecc71;">📊 Total Marks Summary</h3>
+        <div class="answer" style="font-size: 20px; font-weight: 700; color: #2ecc71;">
+          ${totalMarks} / ${possibleMarks} Marks
+          <span style="font-size: 14px; font-weight: 400; color: #69727e; display: block; margin-top: 5px;">
+            ${Math.round((totalMarks/possibleMarks)*100)}% Score
+          </span>
+        </div>
+      </div>
+    `;
+
+    container.innerHTML = html;
+    nextPage(); // Go to summary page
+  }
+
+  /* ============================
+     SUBMIT ALL FEEDBACK
+     ============================ */
+  function submitAllFeedback() {
+    // Ensure all feedback is saved
+    for (let i = 1; i <= 6; i++) {
+      if (!allFeedback[i]) {
+        if (i >= 3 && i <= 4) {
+          saveTwoMarksFeedback(i - 2);
+        } else {
+          saveFeedback(i);
+        }
+      }
+    }
+    saveFinalFeedback();
+
+    const successPage = document.getElementById('page11');
+    if (successPage) {
+      pages.forEach(p => p.classList.remove('active'));
+      successPage.classList.add('active');
+      currentPage = pages.length - 1;
+      updateProgress();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      
+      console.log('📋 All Feedback Submitted:', allFeedback);
+    }
+  }
+
+  /* ============================
+     KEYBOARD SHORTCUTS
+     ============================ */
+  document.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight' && currentPage < pages.length - 1) nextPage();
+    if (e.key === 'ArrowLeft' && currentPage > 0) prevPage();
+    if (e.key === 'Escape') exitSurvey();
+  });
+
+  /* ============================
+     INIT
+     ============================ */
+  showPage(0);
+</script>
+
+</body>
+</html>
